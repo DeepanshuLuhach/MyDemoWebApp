@@ -32,7 +32,7 @@
 		<input type="submit"><br>
 	</form>
 	<h1> See all Dev entry</h1>
-	<form action="allDev">
+	<form action="Devs">
 		<input type="submit"><br>
 	</form>
 	<h1> See all Dev entry Sorted By name</h1>

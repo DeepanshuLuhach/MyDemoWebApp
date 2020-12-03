@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.luhach.MyWebApp.model.Dev;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 
 // CrudRepository<Class_name, Type_of_primary_key>
-public interface DevRepo extends CrudRepository<Dev, Integer>{
+public interface DevRepo extends JpaRepository<Dev, Integer>{
 
     List<Dev> findByTech(String tech);
 

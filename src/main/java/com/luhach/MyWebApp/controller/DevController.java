@@ -3,6 +3,8 @@ package com.luhach.MyWebApp.controller;
 import java.util.List;
 import java.util.Optional;
 
+
+
 import com.luhach.MyWebApp.dao.DevRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,9 @@ import com.luhach.MyWebApp.model.Dev;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class DevController{
@@ -40,43 +42,37 @@ public class DevController{
         return "home";
     }
 
-    @RequestMapping("/getDev")
-    public ModelAndView getDev(@RequestParam("id") int id){
+    @RequestMapping("/Dev/id/{id}")
+    @ResponseBody
+    public Optional<Dev> getDev(@PathVariable("id") int id) {
         
-        ModelAndView mv = new ModelAndView();
         Optional<Dev> dev = repo.findById(id);
-        mv.addObject("dev", dev);
-        mv.setViewName("showDev");
-        return mv;
+        return dev;
     }
 
     
-    @RequestMapping("/getDevByTech")
-    public ModelAndView getDevByTech(@RequestParam("tech") String tech){
+    @RequestMapping("/Dev/tech/{tech}")
+    @ResponseBody
+    public List<Dev> getDevByTech(@PathVariable("tech") String tech) {
+        System.out.println("tech : " + tech);
         
-        ModelAndView mv = new ModelAndView();
         List<Dev> dev = repo.findByTech(tech);
-        mv.addObject("dev", dev);
-        mv.setViewName("showDev");
-        return mv;
+        System.out.println(dev);
+        return dev;
     }
-    @RequestMapping("/allDev")
-    public ModelAndView allDev(){
+    @RequestMapping("/Devs")
+    @ResponseBody
+    public Iterable<Dev> allDev() {
         
-        ModelAndView mv = new ModelAndView();
         Iterable<Dev> dev = repo.findAll();
-        mv.addObject("dev", dev);
-        mv.setViewName("showDev");
-        return mv;
+        return dev;
     }
-    @RequestMapping("/allDevSortedName")
-    public ModelAndView allDevSortedName(){
+    @RequestMapping("/Dev/nameSorted")    
+    @ResponseBody
+    public Iterable<Dev> allDevSortedName(){
         
-        ModelAndView mv = new ModelAndView();
         Iterable<Dev> dev = repo.findAllSorted();
-        mv.addObject("dev", dev);
-        mv.setViewName("showDev");
-        return mv;
+        return dev;
     }
     
     // @RequestMapping("home")
