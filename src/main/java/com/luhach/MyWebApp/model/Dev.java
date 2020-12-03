@@ -1,9 +1,14 @@
-package com.luhach.MyWebApp;
+package com.luhach.MyWebApp.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Dev {
     
+    @Id
     private int id;
-    private String name, lang;
+    private String name;
 
     public int getId() {
         return id;
@@ -21,12 +26,9 @@ public class Dev {
         this.name = name;
     }
 
-    public String getLang() {
-        return lang;
+    @Override
+    public String toString() {
+        return "Dev [id=" + id + ", name=" + name + "]";
     }
 
-    public void setLang(String lang) {
-        this.lang = lang;
-    }
-    
 }
