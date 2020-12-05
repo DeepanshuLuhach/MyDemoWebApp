@@ -30,14 +30,21 @@
 			<scope>test</scope>
 		</dependency>
 
-<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jasper -->
+<!-- To handle jsp files as views -->
 <dependency>
     <groupId>org.apache.tomcat</groupId>
     <artifactId>tomcat-jasper</artifactId>
     <version>9.0.39</version>
 </dependency>
+<!-- To add support for XML response body4 -->
+<dependency>
+    <groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-xml</artifactId>
+    <version>2.11.3</version>
+</dependency>
 
-
+<!-- For in memory database -->
+<!-- accessed using : localhost:8080/h2-console -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
